@@ -1,19 +1,18 @@
 <template>
   <router-link
-    class="event-link"
-    :to="{ name: 'EventDetails', params: { id: event.id } }"
+    class="passenger-link"
+    :to="{ name: 'PassengerDetail', params: { id: passenger.id } }"
   >
-    <div class="event-card">
-      <span>@{{ event.time }} on {{ event.date }}</span>
-      <h4>{{ event.title }}</h4>
+    <div class="passenger-card">
+      <span>{{ passenger.first_name }} {{ passenger.last_name }}</span>
     </div>
   </router-link>
 </template>
 <script>
 export default {
-  name: 'EventCard',
+  name: 'PassengerCard',
   props: {
-    event: {
+    passenger: {
       type: Object,
       required: true
     }
@@ -21,7 +20,7 @@ export default {
 }
 </script>
 <style scoped>
-.event-card {
+.passenger-card {
   padding: 20px;
   width: 250px;
   cursor: pointer;
@@ -29,12 +28,12 @@ export default {
   margin-bottom: 18px;
 }
 
-.event-card:hover {
+.passenger-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
-.event-link {
+.passenger-link {
   color: #2c3e50;
   text-decoration: none;
 }

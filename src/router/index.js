@@ -1,20 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import EventListView from '../views/EventListView.vue'
+import PassengerListView from '../views/PassengerListView.vue'
 import AboutView from '../views/AboutView.vue'
-import EventDetails from '../views/event/EventDetailView.vue'
-import EventRegister from '../views/event/EventRegisterView.vue'
-import EventEdit from '../views/event/EventEditView.vue'
-import EventLayout from '../views/event/EventLayoutView.vue'
+import PassengerDetail from '../views/PassengerDetailView.vue'
+import PassengerLayout from '../views/PassengerLayout.vue'
+import AirlineDetail from '../views/AirlineDetailView.vue'
 import NotFound from '../views/NotFoundView.vue'
 import NetworkError from '../views/NetworkErrorView.vue'
 const routes = [
   {
     path: '/',
-    name: 'EventList',
-    component: EventListView,
+    name: 'PassengerList',
+    component: PassengerListView,
     props: (route) => ({
-      page: parseInt(route.query.page) || 1,
-      perPage: parseInt(route.query.perPage) || 2
+      page: parseInt(route.query.page) || 1
     })
   },
   {
@@ -23,26 +21,20 @@ const routes = [
     component: AboutView
   },
   {
-    path: '/events/:id',
-    name: 'EventLayout',
-    component: EventLayout,
+    path: '/passenger/:id',
+    name: 'PassengerLayout',
+    component: PassengerLayout,
     children: [
       {
         path: '',
-        name: 'EventDetails',
-        component: EventDetails,
+        name: 'PassengerDetail',
+        component: PassengerDetail,
         props: true
       },
       {
-        path: 'register',
-        name: 'EventRegister',
-        component: EventRegister,
-        props: true
-      },
-      {
-        path: 'edit',
-        name: 'EventEdit',
-        component: EventEdit,
+        path: 'airline',
+        name: 'AirlineDetail',
+        component: AirlineDetail,
         props: true
       }
     ],
